@@ -1,6 +1,8 @@
-# Read Properties [![CI build](https://github.com/christian-draeger/read-properties/workflows/CI/badge.svg)](https://github.com/christian-draeger/read-properties/actions?query=workflow%3ACI+branch%3Amaster)
+# Write Properties 
 
-This is a GitHub action to read from java `.properties` files.
+This is a GitHub action to write to java `.properties` files.
+If you are also looking for an action that enables you to read values from properties files use 
+[Read Properties action](https://github.com/christian-draeger/read-properties)
 
 ## Inputs
 
@@ -10,25 +12,20 @@ This is a GitHub action to read from java `.properties` files.
 
 ### `property`
 
-**Required** The property you want to read.
-
-## Outputs
+**Required** The property you want to write.
 
 ### `value`
 
-The value of the given property.
+**Required** The value of the given property.
 
 ## Example usage
 
-    - name: Read value from Properties-file
-      id: read_property
-      uses: christian-draeger/read-properties@1.0.0
+    - name: Write value to Properties-file
+      uses: christian-draeger/write-properties@1.0.0
       with:
         path: './src/main/resources/application.properties'
         property: 'the.key.of.the.property'
-    - name: Do something with your bumped release version
-      run: echo ${{ steps.read_property.outputs.value }}
-      # will print "the value of 'the.key.of.the.property'"
+        value: 'some value'
 
 # License
 The scripts and documentation in this project are released under the [MIT License](LICENSE)
