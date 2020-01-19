@@ -1,0 +1,54 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+
+    # test 1
+    - name: Read first property
+      id: read_first_property
+      uses: christian-draeger/read-properties@1.0.0
+      with:
+        path: './test/foo.properties'
+        property: 'foo'
+    - name: Verify first property has been read correctly
+      if: steps.read_first_property.outputs.value != 'bar'
+      run: exit 1
+    - name: Change value of first entry
+      uses: ./
+      with:
+        path: './test/foo.properties'
+        property: 'foo'
+        value: 'xxx'
+    - name: Read first property again
+      id: read_first_property_again
+      uses: christian-draeger/read-properties@1.0.0
+      with:
+        path: './test/foo.properties'
+        property: 'foo'
+    - name: Verify first property has been new value
+      if: steps.read_first_property_again.outputs.value != 'xxx'
+      run: exit 1
+
+    # test 2
+    - name: Add new entry
+      uses: ./
+      with:
+        path: './test/foo.properties'
+        property: 'new.entry'
+        value: 'yyy'
+    - name: Read new property
+      id: read_added_property
+      uses: christian-draeger/read-properties@1.0.0
+      with:
+        path: './test/foo.properties'
+        property: 'foo'
+    - name: Verify first property has been new value
+      if: steps.read_added_property.outputs.value != 'yyy'
+      run: exit 1
