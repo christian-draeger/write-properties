@@ -1,8 +1,9 @@
 # Write Properties 
 
 This is a GitHub action to write to java `.properties` files.
-If you are also looking for an action that enables you to read values from properties files use 
-[Read Properties action](https://github.com/christian-draeger/read-properties)
+
+> If you are also looking for an action that enables you to read values from properties files use
+> [Read Properties action](https://github.com/christian-draeger/read-properties)
 
 ## Inputs
 

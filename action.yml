@@ -2,7 +2,7 @@ name: Write Properties
 description: Write property to java properties files.
 author: Christian Dräger
 branding:
-  icon: 'list'
+  icon: 'edit'
   color: 'yellow'
 inputs:
   path:
@@ -20,3 +20,4 @@ runs:
   args:
     - ${{ inputs.path }}
     - ${{ inputs.property }}
+    - ${{ inputs.value }}
