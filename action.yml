@@ -14,9 +14,6 @@ inputs:
   value:
     description: : 'The properties value you want to write'
     required: true
-outputs:
-  value:
-    description: 'The value of the given property'
 runs:
   using: 'docker'
   image: 'Dockerfile'
