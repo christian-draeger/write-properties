@@ -22,7 +22,7 @@ main() {
   echo "propertyKey: $propertyKey"
   echo "propertyValue: $propertyValue"
 
-  if ! grep -R "^[#]*\s*${propertyKey}=.*" "$path" > /dev/null; then
+  if ! grep -r "^[#]*\s*${propertyKey}=.*" "$path" > /dev/null; then
     echo "APPENDING because '${propertyKey}' not found"
     cat >> "$path" <<EOF
 
