@@ -24,7 +24,7 @@ This is a GitHub action to write to java `.properties` files.
 ## Example usage
 
     - name: Write value to Properties-file
-      uses: christian-draeger/write-properties@1.0.0
+      uses: christian-draeger/write-properties@1.0.1
       with:
         path: './src/main/resources/application.properties'
         property: 'the.key.of.the.property'
