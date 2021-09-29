@@ -15,23 +15,19 @@ set -euo pipefail
 main() {
 
   local path="$1";
-  local propertyKey="$2";
-  local propertyValue="$3";
+  local keysString="$2";
+  local valuesString="$3";
 
-  echo "path: $path"
-  echo "propertyKey: $propertyKey"
-  echo "propertyValue: $propertyValue"
+  IFS=$'\n\r' read -r -a keys <<<"$keysString"
+  IFS=$'\n\r' read -r -a values <<<"$valuesString"
+  unset IFS
 
-  if ! grep -r "^[#]*\s*${propertyKey}=.*" "$path" > /dev/null; then
-    echo "APPENDING because '${propertyKey}' not found"
-    cat >> "$path" <<EOF
-
-${propertyKey}=${propertyValue}
-EOF
-  else
-    echo "SETTING because '${propertyKey}' found already"
-    sed -ir "s/^[#]*\s*${propertyKey}=.*/$propertyKey=$propertyValue/" "$path"
-  fi
+  local index=0;
+  for i in "${keys[@]}"; do
+    echo "$i=${values[index]}"
+    echo "$i=${values[index]}" >> $path
+    index=$index+1
+  done
 }
 
 main "$1" "$2" "$3"

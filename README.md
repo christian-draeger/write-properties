@@ -15,20 +15,24 @@ This is a GitHub action to write to java `.properties` files.
 
 ### `property`
 
-**Required** The property you want to write.
+**Required** The property or properties you want to write.
 
 ### `value`
 
-**Required** The value of the given property.
+**Required** The value of the given property or properties, in the same order.
 
 ## Example usage
 
     - name: Write value to Properties-file
-      uses: christian-draeger/write-properties@1.0.1
+      uses: christian-draeger/write-properties@1.0.2
       with:
         path: './src/main/resources/application.properties'
-        property: 'the.key.of.the.property'
-        value: 'some value'
+        property: |
+          'the.key.of.the.first.property'
+          'the.key.of.the.second.property'
+        value: |
+          'first value'
+          'second value'
 
 # License
 The scripts and documentation in this project are released under the [MIT License](LICENSE)
