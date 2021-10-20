@@ -1,5 +1,5 @@
 name: Write Properties
-description: Write property to java properties files.
+description: Write properties to a properties file.
 author: Christian Dräger
 branding:
   icon: 'edit'
@@ -9,10 +9,10 @@ inputs:
     description: 'The path to the properties file.'
     required: true
   property:
-    description: 'The property you want to write'
+    description: 'The property keys you want to write. Accepts an array.'
     required: true
   value:
-    description: 'The properties value you want to write'
+    description: 'The property values you want to write (same order as the keys). Accepts an array.'
     required: true
 runs:
   using: 'docker'
